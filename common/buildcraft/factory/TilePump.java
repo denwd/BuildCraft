@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import buildcraft.core.utils.BlockUtil;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -89,7 +90,7 @@ public class TilePump extends TileMachine implements IMachine, IPowerReceptor, I
 							index = getNextIndexToPump(true);
 
 							if (liquidToPump.itemID != Block.waterStill.blockID || BuildCraftCore.consumeWaterSources) {
-								worldObj.setBlockWithNotify(index.i, index.j, index.k, 0);
+								BlockUtil.trySetBlock(worldObj, index.i, index.j, index.k, 0); // MCPC+
 							}
 
 							tank.fill(liquidToPump, true);

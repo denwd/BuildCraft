@@ -44,7 +44,7 @@ public class BlockFrame extends Block implements IFramePipeConnection {
 
 		int meta = world.getBlockMetadata(i, j, k);
 		if (meta == 1 && random.nextInt(10) > 5) {
-			world.setBlockWithNotify(i, j, k, 0);
+			world.setBlockWithNotify(i, j, k, 0); // MCPC+ note: frame decay, no event needed?
 		}
 	}
 

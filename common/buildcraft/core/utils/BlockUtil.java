@@ -47,6 +47,8 @@ public class BlockUtil {
 		if (blockId != 0 && BuildCraftCore.dropBrokenBlocks && !world.isRemote && world.getGameRules().getGameRuleBooleanValue("doTileDrops")) {
 			List<ItemStack> items = Block.blocksList[blockId].getBlockDropped(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
 
+			if (!trySetBlock(world, x, y, z, 0)) return; // MCPC+
+
 			for (ItemStack item : items) {
 				float var = 0.7F;
 				double dx = world.rand.nextFloat() * var + (1.0F - var) * 0.5D;
@@ -61,7 +63,7 @@ public class BlockUtil {
 			}
 		}
 
-		world.setBlockWithNotify(x, y, z, 0);
+		//world.setBlockWithNotify(x, y, z, 0); // MCPC+ - move up
 	}
 
 	public static boolean canChangeBlock(World world, int x, int y, int z) {
@@ -114,4 +116,16 @@ public class BlockUtil {
 			}
 		}
 	}
+
+	// MCPC+ start
+	public static boolean trySetBlock(World world, int x, int y, int z, int blockID, int metadata, boolean needsUpdate) {
+		return world.trySetBlockAndMetadata(x, y, z, blockID, metadata, needsUpdate, BuildCraftCore.fakePlayerName, BuildCraftCore.fakePlayerDoLogin);
+	}
+	public static boolean trySetBlock(World world, int x, int y, int z, int blockID, int metadata) {
+		return trySetBlock(world, x, y, z, blockID, metadata, true);
+	}
+	public static boolean trySetBlock(World world, int x, int y, int z, int blockID) {
+		return trySetBlock(world, x, y, z, blockID, 0);
+	}
+	// MCPC+ end
 }
