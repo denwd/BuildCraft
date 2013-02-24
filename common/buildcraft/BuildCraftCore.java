@@ -146,6 +146,11 @@ public class BuildCraftCore {
 
 	public static BptItem[] itemBptProps = new BptItem[Item.itemsList.length];
 
+	// MCPC+ start
+	public static String fakePlayerName;
+	public static boolean fakePlayerDoLogin;
+	// MCPC+ end
+
 	public static Logger bcLog = Logger.getLogger("Buildcraft");
 
 	@Instance("BuildCraft|Core")
@@ -247,6 +252,15 @@ public class BuildCraftCore {
 
 			diamondGearItem = (new ItemBuildCraft(Integer.parseInt(diamondGearId.value))).setIconIndex(1 * 16 + 4).setItemName("diamondGearItem");
 			LanguageRegistry.addName(diamondGearItem, "Diamond Gear");
+
+			// MCPC+ start
+			Property fakename = BuildCraftCore.mainConfiguration.get(Configuration.CATEGORY_GENERAL, "blocks.fakeplayername", "[BuildCraft]");
+			fakename.comment = "The name of the fake player used for block events";
+			BuildCraftCore.fakePlayerName = fakename.value;
+			Property fakelogin = BuildCraftCore.mainConfiguration.get(Configuration.CATEGORY_GENERAL, "blocks.fakeplayerlogin", false);
+			fakelogin.comment = "Causes login and join events to be sent for the fake player. This may help some plugins, but will cause errors with others. YMMV.";
+			BuildCraftCore.fakePlayerDoLogin = fakelogin.getBoolean(false);
+			// MCPC+ end
 		} finally {
 			mainConfiguration.save();
 		}

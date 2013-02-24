@@ -63,7 +63,7 @@ public class TileMiningWell extends TileMachine implements IMachine, IPowerRecep
 
 		// MCPC+ start
 		//world.setBlockWithNotify(xCoord, depth, zCoord, BuildCraftFactory.plainPipeBlock.blockID);
-		if (!world.trySetBlockAndMetadata(xCoord, depth, yCoord, BuildCraftFactory.plainPipeBlock.blockID, 0, true, "[Buildcraft]", true))
+		if (!world.trySetBlockAndMetadata(xCoord, depth, yCoord, BuildCraftFactory.plainPipeBlock.blockID, 0, true, BuildCraftCore.fakePlayerName, BuildCraftCore.fakePlayerDoLogin))
 			return;
 		// MCPC+ end
 
