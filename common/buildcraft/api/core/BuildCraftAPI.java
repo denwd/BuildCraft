@@ -33,16 +33,4 @@ public class BuildCraftAPI {
 	public static boolean unbreakableBlock(int blockId) {
 		return blockId == Block.bedrock.blockID || blockId == Block.lavaStill.blockID || blockId == Block.lavaMoving.blockID;
 	}
-
-	@Deprecated
-	// To be removed
-	public static void breakBlock(World world, int x, int y, int z) {
-		int blockId = world.getBlockId(x, y, z);
-
-		if (blockId != 0) {
-			Block.blocksList[blockId].dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-		}
-
-		world.setBlockWithNotify(x, y, z, 0);
-	}
 }
