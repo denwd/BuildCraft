@@ -408,16 +408,20 @@ public class TileQuarry extends TileMachine implements IMachine, IPowerReceptor,
 
 			List<ItemStack> stacks = BlockUtil.getItemStackFromBlock(worldObj, i, j, k);
 
-			if (stacks != null) {
-				for (ItemStack s : stacks) {
-					if (s != null) {
-						mineStack(s);
+			// MCPC+ start
+			int metadata = worldObj.getBlockMetadata(i, j, k);
+			if (worldObj.trySetBlockAndMetadata(i, j, k, 0, 0, true, "[Buildcraft]", true)) {
+				if (stacks != null) {
+					for (ItemStack s : stacks) {
+						if (s != null) {
+							mineStack(s);
+						}
 					}
 				}
-			}
 
-			worldObj.playAuxSFXAtEntity(null, 2001, i, j, k, blockId + (worldObj.getBlockMetadata(i, j, k) << 12));
-			worldObj.setBlockWithNotify(i, j, k, 0);
+				worldObj.playAuxSFXAtEntity(null, 2001, i, j, k, blockId + (metadata << 12);
+			}
+            // MCPC+ end
 		}
 
 		// Collect any lost items laying around
