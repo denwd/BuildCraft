@@ -367,4 +367,31 @@ public class TileArchitect extends TileBuildCraft implements IInventory {
 	public void closeChest() {
 
 	}
+
+	// MCPC+ start
+	public java.util.List<org.bukkit.entity.HumanEntity> transaction =
+			new java.util.ArrayList<org.bukkit.entity.HumanEntity>();
+
+	public void onOpen(org.bukkit.craftbukkit.v1_4_R1.entity.CraftHumanEntity who) {
+		transaction.add(who);
+	}
+
+	public void onClose(org.bukkit.craftbukkit.v1_4_R1.entity.CraftHumanEntity who) {
+		transaction.remove(who);
+	}
+
+	public java.util.List<org.bukkit.entity.HumanEntity> getViewers() {
+		return transaction;
+	}
+
+	public void setMaxStackSize(int size) {}
+
+	public ItemStack[] getContents()
+	{
+		ItemStack[] ret = new ItemStack[getSizeInventory()];
+		for (int i = 0; i < getSizeInventory(); ++i)
+			ret[i] = getStackInSlot(i);
+		return ret;
+	}
+	// MCPC+ end
 }
