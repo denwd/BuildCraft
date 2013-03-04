@@ -114,7 +114,7 @@ public class BuildCraftEnergy {
 		BuildCraftCore.mainConfiguration.save();
 
 		engineBlock = new BlockEngine(engineId.getInt(DefaultProps.ENGINE_ID));
-		GameRegistry.registerBlock(engineBlock, ItemEngine.class, "Engine Block");
+		GameRegistry.registerBlock(engineBlock, ItemEngine.class, null);
 
 		LanguageRegistry.addName(new ItemStack(engineBlock, 1, 0), "Redstone Engine");
 		LanguageRegistry.addName(new ItemStack(engineBlock, 1, 1), "Steam Engine");
