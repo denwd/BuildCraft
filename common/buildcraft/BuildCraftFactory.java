@@ -88,7 +88,9 @@ public class BuildCraftFactory {
 
 	public class QuarryChunkloadCallback implements ForgeChunkManager.OrderedLoadingCallback {
 		@Override
-		public void ticketsLoaded(List<Ticket> tickets, World world) {
+		@SuppressWarnings("unchecked")
+		public void ticketsLoaded(List _tickets, World world) {
+			List<Ticket> tickets = (List<Ticket>) _tickets;
 			for (Ticket ticket : tickets) {
 				int quarryX = ticket.getModData().getInteger("quarryX");
 				int quarryY = ticket.getModData().getInteger("quarryY");
@@ -100,7 +102,9 @@ public class BuildCraftFactory {
 		}
 
 		@Override
-		public List<Ticket> ticketsLoaded(List<Ticket> tickets, World world, int maxTicketCount) {
+		@SuppressWarnings("unchecked")
+		public List<Ticket> ticketsLoaded(List _tickets, World world, int maxTicketCount) {
+			List<Ticket> tickets = (List<Ticket>) _tickets;
 			List<Ticket> validTickets = Lists.newArrayList();
 			for (Ticket ticket : tickets) {
 				int quarryX = ticket.getModData().getInteger("quarryX");
