@@ -263,7 +263,7 @@ public class BuildCraftTransport {
 			pipeWaterproof.setCreativeTab(CreativeTabs.tabMaterials);
 			LanguageRegistry.addName(pipeWaterproof, "Pipe Waterproof");
 			genericPipeBlock = new BlockGenericPipe(Integer.parseInt(genericPipeId.value));
-			GameRegistry.registerBlock(genericPipeBlock);
+			GameRegistry.registerBlock(genericPipeBlock, "Generic Pipe Block");
 
 			// Fixing retro-compatiblity
 			pipeItemsWood = createPipe(DefaultProps.PIPE_ITEMS_WOOD_ID, PipeItemsWood.class, "Wooden Transport Pipe", "plankWood", Block.glass, "plankWood");
