@@ -410,7 +410,7 @@ public class TileQuarry extends TileMachine implements IMachine, IPowerReceptor,
 
 			// MCPC+ start
 			int metadata = worldObj.getBlockMetadata(i, j, k);
-			if (worldObj.trySetBlockAndMetadata(i, j, k, 0, 0, true, BuildCraftCore.fakePlayerName, BuildCraftCore.fakePlayerDoLogin)) {
+			if (BlockUtil.trySetBlockWithNotify(worldObj, i, j, k, 0, 0)) {
 				if (stacks != null) {
 					for (ItemStack s : stacks) {
 						if (s != null) {

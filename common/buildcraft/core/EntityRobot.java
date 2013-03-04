@@ -214,12 +214,12 @@ public class EntityRobot extends Entity implements IEntityAdditionalSpawnData {
 						if (target.mode == Mode.ClearIfInvalid) {
 
 							if (!target.isValid(a.context)) {
-								BlockUtil.trySetBlock(worldObj, target.x, target.y, target.z, 0, 0); // MCPC+
+								BlockUtil.trySetBlockWithNotify(worldObj, target.x, target.y, target.z, 0, 0); // MCPC+
 							}
 
 						} else if (target.stackToUse != null) {
 
-							BlockUtil.trySetBlock(worldObj, target.x, target.y, target.z, 0); // MCPC+
+							BlockUtil.trySetBlockWithNotify(worldObj, target.x, target.y, target.z, 0, 0); // MCPC+
 							throw new RuntimeErrorException(null, "NOT IMPLEMENTED");
 							// target.stackToUse.getItem().onItemUse(target.stackToUse,
 							// CoreProxy.getBuildCraftPlayer(worldObj), worldObj, target.x, target.y - 1,

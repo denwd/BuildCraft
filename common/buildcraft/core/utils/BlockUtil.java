@@ -47,7 +47,7 @@ public class BlockUtil {
 		if (blockId != 0 && BuildCraftCore.dropBrokenBlocks && !world.isRemote && world.getGameRules().getGameRuleBooleanValue("doTileDrops")) {
 			List<ItemStack> items = Block.blocksList[blockId].getBlockDropped(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
 
-			if (!trySetBlock(world, x, y, z, 0)) return; // MCPC+
+			if (!trySetBlockWithNotify(world, x, y, z, 0, 0)) return; // MCPC+
 
 			for (ItemStack item : items) {
 				float var = 0.7F;
@@ -126,6 +126,14 @@ public class BlockUtil {
 	}
 	public static boolean trySetBlock(World world, int x, int y, int z, int blockID) {
 		return trySetBlock(world, x, y, z, blockID, 0);
+	}
+	public static boolean trySetBlockWithNotify(World world, int x, int y, int z, int blockID, int metadata) {
+		if (trySetBlock(world, x, y, z, blockID, metadata, true)) {
+			world.notifyBlockChange(x, y, z, blockID);
+			return true;
+		} else {
+			return false;
+		}
 	}
 	// MCPC+ end
 }
