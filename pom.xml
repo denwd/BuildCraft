@@ -12,7 +12,7 @@
     <forge.build>534</forge.build>
     <forge.version>6.6.2.${forge.build}</forge.version>
     <mcp.mappings>https://raw.github.com/MinecraftForge/FML/1bd6847bc80f51b06544068011f7df3218f13999/conf/</mcp.mappings>
-    <mcpc-plus.build>229</mcpc-plus.build>
+    <mcpc-plus.build>230</mcpc-plus.build>
     <mcpc-plus.version>${minecraft.version}-R1.1-SNAPSHOT-f${forge.build}-${mcpc-plus.build}</mcpc-plus.version>
   </properties>
   <dependencies>
