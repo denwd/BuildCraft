@@ -9,8 +9,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <minecraft.version>1.4.7</minecraft.version>
     <minecraft_version>1_4_7</minecraft_version>
-    <forge.version>6.6.2.534</forge.version>
+    <forge.build>534</forge.build>
+    <forge.version>6.6.2.${forge.build}</forge.version>
     <mcp.mappings>https://raw.github.com/MinecraftForge/FML/1bd6847bc80f51b06544068011f7df3218f13999/conf/</mcp.mappings>
+    <mcpc-plus.build>229</mcpc-plus.build>
+    <mcpc-plus.version>${minecraft.version}-R1.1-SNAPSHOT-f${forge.build}-${mcpc-plus.build}</mcpc-plus.version>
   </properties>
   <dependencies>
     <dependency>
@@ -30,11 +33,19 @@
         <artifactId>lwjgl_util</artifactId>
         <version>2.8.4</version>
     </dependency>
-    <!-- If you get "is missing, no dependency information available" error, run: mvn initialize -->
+    <!-- 
     <dependency>
       <groupId>net.minecraftforge</groupId>
       <artifactId>minecraft-forge</artifactId>
       <version>${forge.version}</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+    -->
+    <dependency>
+      <groupId>za.co.mcportcentral</groupId>
+      <artifactId>mcpc-plus</artifactId>
+      <version>${mcpc-plus.version}</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
@@ -62,6 +73,7 @@
             <artifactId>specialsource-maven-plugin</artifactId>
             <version>1.0-SNAPSHOT</version>
             <executions>
+            <!--
                 <execution>
                     <id>install-remapped-forge</id>
                     <phase>initialize</phase>
@@ -80,6 +92,25 @@
                         <srgIn>${mcp.mappings}</srgIn>
                     </configuration>
                 </execution>
+                -->
+                <execution>
+                    <id>install-remapped-mcpc-plus</id>
+                    <phase>initialize</phase>
+                    <goals>
+                        <goal>install-remapped-file</goal>
+                    </goals>
+                    <configuration>
+                        <groupId>za.co.mcportcentral</groupId>
+                        <artifactId>mcpc-plus</artifactId>
+                        <version>${mcpc-plus.version}</version>
+                        <inJars>
+                            <!-- <param>http://ci.md-5.net/job/MCPC-Plus/${mcpc-plus.build}/artifact/target/mcpc-plus-${mcpc-plus.version}.jar</param> -->
+                            <param>http://dl.dropbox.com/u/126404991/mcpc-plus-${mcpc-plus.version}.jar</param>
+                        </inJars>
+                        <srgIn>${mcp.mappings}</srgIn>
+                    </configuration>
+                </execution>
+ 
                 <execution>
                     <id>reobfuscate</id>
                     <phase>package</phase>
