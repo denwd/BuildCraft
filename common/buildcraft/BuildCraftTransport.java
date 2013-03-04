@@ -12,7 +12,6 @@ import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.google.common.collect.ImmutableList;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -414,7 +413,7 @@ public class BuildCraftTransport {
 	@IMCCallback
 	public void processIMCRequests(FMLInterModComms.IMCEvent event) {
 		Splitter splitter = Splitter.on("@").trimResults();
-		for (IMCMessage m : (ImmutableList<IMCMessage>) event.getMessages()) {
+		for (IMCMessage m : event.getMessages()) {
 			if ("add-facade".equals(m.key)) {
 				String[] array = Iterables.toArray(splitter.split(m.getStringValue()), String.class);
 				if (array.length != 2) {

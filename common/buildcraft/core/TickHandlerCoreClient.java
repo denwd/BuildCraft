@@ -12,11 +12,11 @@ public class TickHandlerCoreClient implements ITickHandler {
 	private boolean nagged;
 
 	@Override
-	public void tickStart(EnumSet type, Object... tickData) {
+	public void tickStart(EnumSet<TickType> type, Object... tickData) {
 	}
 
 	@Override
-	public void tickEnd(EnumSet type, Object... tickData) {
+	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
 
 		if (nagged)
 			return;
@@ -40,7 +40,7 @@ public class TickHandlerCoreClient implements ITickHandler {
 	}
 
 	@Override
-	public EnumSet ticks() {
+	public EnumSet<TickType> ticks() {
 		return EnumSet.of(TickType.PLAYER);
 	}
 

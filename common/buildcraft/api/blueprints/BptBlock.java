@@ -170,7 +170,6 @@ public class BptBlock {
 		}
 
 		if (Block.blocksList[slot.blockId] != null) {
-			@SuppressWarnings("unchecked")
 			ArrayList<ItemStack> req = Block.blocksList[slot.blockId].getBlockDropped(context.world(), x, y, z, context.world().getBlockMetadata(x, y, z), 0);
 
 			if (req != null) {
