@@ -149,6 +149,10 @@ public class PipeLogicDiamond extends PipeLogic implements ISpecialInventory {
 		return transaction;
 	}
 
+	public org.bukkit.inventory.InventoryHolder getOwner() {
+		return null;
+	}
+
 	public void setMaxStackSize(int size) {}
 
 	public ItemStack[] getContents()

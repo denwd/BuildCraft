@@ -192,6 +192,10 @@ public class SurroundingInventory implements IInventory, IBuilderInventory {
 		return transaction;
 	}
 
+	public org.bukkit.inventory.InventoryHolder getOwner() {
+		return null;
+	}
+
 	public void setMaxStackSize(int size) {}
 
 	public ItemStack[] getContents()
