@@ -37,7 +37,7 @@ Your directory structure should look like this:
 1. Создайте базовую директорию (в примере это basedir)
 1. Скопируйте этот репозиторий в `basedir/BuildCraft/`
 1. Скопируйте папки bin and minecraft_server.jar в `basedir/jars/`
-1. Скопируйте последний билд MCPC+ в basedir\BuildCraft\build\forge\mcp\lib ([получить его можно здесь] http://ci.md-5.net/job/MCPC-Plus-Legacy/))
+1. Скопируйте последний билд MCPC+ в basedir\BuildCraft\build\forge\mcp\lib ([получить его можно здесь](http://ci.md-5.net/job/MCPC-Plus-Legacy/))
 1. Перейдите в директорию basedir/BuildCraft/ при помощи команды cd и запустите компиляцию командой ant
 1. Скомпилированный и обфусцированный jar файл будет находится в basedir/build/dist
 
