@@ -112,7 +112,7 @@ public class TileLaser extends TileBuildCraft implements IPowerReceptor {
 	}
 
 	protected void findTable() {
-		System.out.println("SEARCH");	
+		//System.out.println("SEARCH");	
 		int meta = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
 
 		int minX = xCoord - 5;
