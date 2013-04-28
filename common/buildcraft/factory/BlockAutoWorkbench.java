@@ -43,13 +43,13 @@ public class BlockAutoWorkbench extends BlockBuildCraft {
 			return sideTexture;
 		}
 	}
-
+	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float blockX, float blockY, float blockZ) {
 		if (player.isSneaking() || (player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() instanceof IItemPipe)) {
 				return false;
 		}
-
+		
 		if (!CoreProxy.proxy.isRenderWorld(world)) {
 			player.openGui(BuildCraftFactory.instance, GuiIds.AUTO_CRAFTING_TABLE, world, x, y, z);
 		}
@@ -61,12 +61,12 @@ public class BlockAutoWorkbench extends BlockBuildCraft {
 	public TileEntity createNewTileEntity(World world) {
 		return new TileAutoWorkbench();
 	}
-
+	
 	@Override
 	public void addCreativeItems(ArrayList list) {
 		list.add(new ItemStack(this));
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register) {
