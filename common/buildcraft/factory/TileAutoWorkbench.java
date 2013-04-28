@@ -62,7 +62,7 @@ public class TileAutoWorkbench extends TileEntity implements ISpecialInventory {
 	@Override
 	public ItemStack decrStackSize(int slot, int amount) {
 		ItemStack item = this.crafting.decrStackSize(slot, amount);
-		this.onInventoryChanged();
+		super.onInventoryChanged();
 		return item;
 	}
 
@@ -100,7 +100,7 @@ public class TileAutoWorkbench extends TileEntity implements ISpecialInventory {
 			for (int slot = 0; slot < this.getSizeInventory(); slot++){
 				ItemStack item = this.getStackInSlot(slot);
 				
-				if (item != null && item.stackSize == 1){
+				if (item != null && item.stackSize == 1 && !item.getItem().hasContainerItem()){
 					required[slot] = item.copy();
 				}
 			}
@@ -154,21 +154,14 @@ public class TileAutoWorkbench extends TileEntity implements ISpecialInventory {
 					ItemStack item = inventory.getStackInSlot(slot);
 					
 					if (item != null){
-						boolean refilAll = false;
-						
 						for (int slot1 = 0; slot1 < this.getSizeInventory(); slot1++){
 							ItemStack item1 = this.getStackInSlot(slot1);
 							if (item1 != null && item1.stackSize == 1 && item.isItemEqual(item1)){
 								item1.stackSize++;
 								inventory.decrStackSize(slot, 1);
-								
-								if (slot1 == this.getSizeInventory() - 1) refilAll = true;
-							}else{
-								refilAll = false;
+                                                                if (this.canCraft()) return;
 							}
 						}
-						
-						if (refilAll) return;
 					}
 				}
 			}
@@ -225,7 +218,7 @@ public class TileAutoWorkbench extends TileEntity implements ISpecialInventory {
 		super.readFromNBT(nbt);
 		
 		Utils.readStacksFromNBT(nbt, "stackList", this);
-		this.onInventoryChanged();
+		super.onInventoryChanged();
 	}
 
 	@Override
@@ -253,14 +246,14 @@ public class TileAutoWorkbench extends TileEntity implements ISpecialInventory {
 				this.refilFromNeibour();
 				
 				if (!this.canCraft()){
-					return new ItemStack[0];
+					return null;
 				}
 			}
 			
 			this.craft();
 			item = result.copy();
 		}else{
-			return new ItemStack[0];
+			return null;
 		}
 		
 		return new ItemStack[] { item };
