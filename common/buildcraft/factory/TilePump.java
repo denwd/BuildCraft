@@ -89,9 +89,12 @@ public class TilePump extends TileMachine implements IMachine, IPowerReceptor, I
 						if (powerProvider.useEnergy(10, 10, true) == 10) {
 							index = getNextIndexToPump(true);
 
+                                                        // MCPC+ start
 							if (liquidToPump.itemID != Block.waterStill.blockID || BuildCraftCore.consumeWaterSources) {
-								BlockUtil.trySetBlockWithNotify(worldObj, index.i, index.j, index.k, 0, 0); // MCPC+
+								if (!BlockUtil.trySetBlockWithNotify(worldObj, index.i, index.j, index.k, 0, 0))
+								return;
 							}
+                                                        // MCPC+ end
 
 							tank.fill(liquidToPump, true);
 
