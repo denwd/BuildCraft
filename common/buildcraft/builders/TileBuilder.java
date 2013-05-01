@@ -45,6 +45,7 @@ import buildcraft.core.network.PacketUpdate;
 import buildcraft.core.network.TileNetworkData;
 import buildcraft.core.proxy.CoreProxy;
 import buildcraft.core.utils.Utils;
+import buildcraft.core.utils.BlockUtil;
 
 public class TileBuilder extends TileBuildCraft implements IBuilderInventory, IPowerReceptor, IMachine {
 
@@ -197,8 +198,10 @@ public class TileBuilder extends TileBuildCraft implements IBuilderInventory, IP
 						path = ((TilePathMarker) tile).getPath();
 
 						for (BlockIndex b : path) {
-							worldObj.setBlockWithNotify(b.i, b.j, b.k, 0);
-
+							//MCPC+ start
+							//worldObj.setBlockWithNotify(b.i, b.j, b.k, 0);
+                            BlockUtil.trySetBlockWithNotify(worldObj, b.i, b.j, b.k, 0, 0);
+							//MCPC+ end
 							BuildCraftBuilders.pathMarkerBlock.dropBlockAsItem(worldObj, b.i, b.j, b.k, BuildCraftBuilders.pathMarkerBlock.blockID, 0);
 						}
 
