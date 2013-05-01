@@ -18,6 +18,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import buildcraft.api.core.BuildCraftAPI;
+import buildcraft.core.utils.BlockUtil;
 
 /**
  * This class allow to specify specific behavior for blocks stored in blueprints:
@@ -131,9 +132,12 @@ public class BptBlock {
 	 */
 	public void buildBlock(BptSlotInfo slot, IBptContext context) {
 		// Meta needs to be specified twice, depending on the block behavior
-		context.world().setBlockAndMetadataWithNotify(slot.x, slot.y, slot.z, slot.blockId, slot.meta);
-		context.world().setBlockMetadataWithNotify(slot.x, slot.y, slot.z, slot.meta);
-
+		//MCPC+ start
+		//context.world().setBlockAndMetadataWithNotify(slot.x, slot.y, slot.z, slot.blockId, slot.meta);
+		//context.world().setBlockMetadataWithNotify(slot.x, slot.y, slot.z, slot.meta);
+		BlockUtil.trySetBlockWithNotify(context.world(), slot.x, slot.y, slot.z, slot.blockId, slot.meta);
+		context.world().setBlockMetadataWithNotify(slot.x, slot.y, slot.z, slot.meta); //Metadata set. No event needed?
+                //MCPC+ end
 		if (Block.blocksList[slot.blockId] instanceof BlockContainer) {
 			TileEntity tile = context.world().getBlockTileEntity(slot.x, slot.y, slot.z);
 
