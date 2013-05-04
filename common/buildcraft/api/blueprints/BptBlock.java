@@ -131,12 +131,12 @@ public class BptBlock {
 	 * Places the block in the world, at the location specified in the slot.
 	 */
 	public void buildBlock(BptSlotInfo slot, IBptContext context) {
-		// Meta needs to be specified twice, depending on the block behavior
 		//MCPC+ start
+		// Meta needs to be specified twice, depending on the block behavior
 		//context.world().setBlockAndMetadataWithNotify(slot.x, slot.y, slot.z, slot.blockId, slot.meta);
 		//context.world().setBlockMetadataWithNotify(slot.x, slot.y, slot.z, slot.meta);
-		BlockUtil.trySetBlockWithNotify(context.world(), slot.x, slot.y, slot.z, slot.blockId, slot.meta);
-		context.world().setBlockMetadataWithNotify(slot.x, slot.y, slot.z, slot.meta); //Metadata set. No event needed?
+		if (!BlockUtil.trySetBlockWithNotify(context.world(), slot.x, slot.y, slot.z, slot.blockId, slot.meta)) {}
+		else { context.world().setBlockMetadataWithNotify(slot.x, slot.y, slot.z, slot.meta); }
                 //MCPC+ end
 		if (Block.blocksList[slot.blockId] instanceof BlockContainer) {
 			TileEntity tile = context.world().getBlockTileEntity(slot.x, slot.y, slot.z);
