@@ -306,6 +306,7 @@ public class BuildCraftCore {
 
 		BuildCraftAPI.softBlocks[Block.snow.blockID] = true;
 		BuildCraftAPI.softBlocks[Block.vine.blockID] = true;
+		BuildCraftAPI.softBlocks[Block.fire.blockID] = true;
 		TickRegistry.registerTickHandler(new TickHandlerCoreClient(), Side.CLIENT);
 
 	}
