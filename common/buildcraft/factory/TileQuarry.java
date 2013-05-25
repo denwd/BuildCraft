@@ -732,6 +732,11 @@ public class TileQuarry extends TileMachine implements IMachine, IPowerReceptor,
 	}
 
 	@Override
+	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
+		return false;
+	}
+
+	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
 		return false;
 	}
