@@ -202,10 +202,6 @@ public abstract class Engine {
 	public void setInventorySlotContents(int i, ItemStack itemstack) {
 	}
 
-	public boolean isStackValidForSlot(int i, ItemStack itemstack){
-		return false;
-	}
-
 	public abstract ILiquidTank getTank(ForgeDirection direction, LiquidStack type);
 
 }
