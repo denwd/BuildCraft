@@ -235,6 +235,12 @@ public class TileFiller extends TileBuildCraft implements ISidedInventory, IPowe
 		return "Filler";
 	}
 
+        @Override
+	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	@Override
 	public void readFromNBT(NBTTagCompound nbttagcompound) {
 		super.readFromNBT(nbttagcompound);
