@@ -202,6 +202,11 @@ public class EngineStone extends Engine {
 	}
 
 	@Override
+	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
+		return getItemBurnTime(itemstack) > 0;
+	}
+
+	@Override
 	public ItemStack getStackInSlotOnClosing(int var1) {
 		if (itemInInventory == null)
 			return null;
