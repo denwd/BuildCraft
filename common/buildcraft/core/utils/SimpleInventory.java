@@ -138,12 +138,6 @@ public class SimpleInventory implements IInventory, INBTTagable {
 	    return _contents;
 	}
 
-	@Override
-	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	// MCPC+ start
 	public java.util.List<org.bukkit.entity.HumanEntity> transaction =
 			new java.util.ArrayList<org.bukkit.entity.HumanEntity>();
