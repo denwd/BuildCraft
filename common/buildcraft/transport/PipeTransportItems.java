@@ -617,4 +617,9 @@ public class PipeTransportItems extends PipeTransport {
 	public boolean allowsConnect(PipeTransport with) {
 		return with instanceof PipeTransportItems;
 	}
+	
+	@Override
+	public boolean delveIntoUnloadedChunks() {
+		return true;
+	}
 }
