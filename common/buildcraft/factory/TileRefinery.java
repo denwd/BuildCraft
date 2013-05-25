@@ -92,11 +92,6 @@ public class TileRefinery extends TileMachine implements ITankContainer, IPowerR
 	public int getInventoryStackLimit() {
 		return 0;
 	}
-	
-	@Override
-	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
-		return false;
-	}
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
