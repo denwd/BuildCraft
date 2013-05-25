@@ -274,9 +274,7 @@ public class TileGenericPipe extends TileEntity implements IPowerReceptor, ITank
 		for (ForgeDirection o : ForgeDirection.VALID_DIRECTIONS) {
 			Position pos = new Position(xCoord, yCoord, zCoord, o);
 			pos.moveForwards(1.0);
-
-			tileBuffer[o.ordinal()] = new TileBuffer();
-			tileBuffer[o.ordinal()].initialize(worldObj, (int) pos.x, (int) pos.y, (int) pos.z);
+            tileBuffer[o.ordinal()] = new TileBuffer(worldObj, (int) pos.x, (int) pos.y, (int) pos.z, pipe.transport.delveIntoUnloadedChunks());
 		}
 
 		for (ForgeDirection o : ForgeDirection.VALID_DIRECTIONS) {
