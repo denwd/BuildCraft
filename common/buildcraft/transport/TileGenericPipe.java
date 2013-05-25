@@ -464,7 +464,7 @@ public class TileGenericPipe extends TileEntity implements IPowerReceptor, ITank
 			return null;
 	}
 
-	public boolean isPipeConnected(TileEntity with, ForgeDirection side) {
+	protected boolean isPipeConnected(TileEntity with, ForgeDirection side) {
 		Pipe pipe1 = pipe;
 		Pipe pipe2 = null;
 
