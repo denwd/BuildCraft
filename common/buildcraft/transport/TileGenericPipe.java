@@ -283,6 +283,10 @@ public class TileGenericPipe extends TileEntity implements IPowerReceptor, ITank
 			if (tile instanceof ITileBufferHolder) {
 				((ITileBufferHolder) tile).blockCreated(o, BuildCraftTransport.genericPipeBlock.blockID, this);
 			}
+			
+			if (tile instanceof TileGenericPipe) {
+				((TileGenericPipe) tile).scheduleNeighborChange();
+			}
 		}
 
 		bindPipe();
