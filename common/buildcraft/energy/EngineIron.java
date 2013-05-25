@@ -411,6 +411,13 @@ public class EngineIron extends Engine {
 	}
 
 	@Override
+	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
+		if (itemstack == null) return false;
+		if (Block.ice.blockID == itemstack.itemID) return true;
+		return LiquidContainerRegistry.getLiquidForFilledItem(itemstack) != null;		
+	}
+
+	@Override
 	public ItemStack getStackInSlotOnClosing(int var1) {
 		if (itemInInventory == null)
 			return null;
