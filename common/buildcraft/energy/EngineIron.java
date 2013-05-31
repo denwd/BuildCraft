@@ -59,7 +59,7 @@ public class EngineIron extends Engine {
 
 	@Override
 	public int explosionRange() {
-		return 8;
+		return BuildCraftCore.ironengineexplrange;
 	}
 
 	@Override
