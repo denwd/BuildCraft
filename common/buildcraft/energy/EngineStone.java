@@ -16,6 +16,7 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.liquids.ILiquidTank;
 import net.minecraftforge.liquids.LiquidStack;
+import buildcraft.BuildCraftCore;
 import buildcraft.core.DefaultProps;
 import buildcraft.core.utils.Utils;
 import buildcraft.energy.gui.ContainerEngine;
