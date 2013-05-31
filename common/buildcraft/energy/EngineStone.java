@@ -41,7 +41,7 @@ public class EngineStone extends Engine {
 
 	@Override
 	public int explosionRange() {
-		return 4;
+		return BuildCraftCore.stoneengineexplrange;
 	}
 
 	@Override
