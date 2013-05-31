@@ -21,6 +21,7 @@ import net.minecraftforge.liquids.LiquidStack;
 import net.minecraftforge.liquids.LiquidTank;
 import buildcraft.api.fuels.IronEngineCoolant;
 import buildcraft.api.fuels.IronEngineFuel;
+import buildcraft.BuildCraftCore;
 import buildcraft.core.DefaultProps;
 import buildcraft.core.utils.Utils;
 import buildcraft.energy.gui.ContainerEngine;
