@@ -149,6 +149,8 @@ public class BuildCraftCore {
 	// MCPC+ start
 	public static String fakePlayerName;
 	public static boolean fakePlayerDoLogin;
+	public static int stoneengineexplrange = 4;
+	public static int ironengineexplrange = 8;
 	// MCPC+ end
 
 	public static Logger bcLog = Logger.getLogger("Buildcraft");
@@ -260,6 +262,14 @@ public class BuildCraftCore {
 			Property fakelogin = BuildCraftCore.mainConfiguration.get(Configuration.CATEGORY_GENERAL, "blocks.fakeplayerlogin", false);
 			fakelogin.comment = "Causes login and join events to be sent for the fake player. This may help some plugins, but will cause errors with others. YMMV.";
 			BuildCraftCore.fakePlayerDoLogin = fakelogin.getBoolean(false);
+			
+			Property ironengineexplrange = BuildCraftCore.mainConfiguration.get(Configuration.CATEGORY_GENERAL, "engine.ironexplrange", 8);
+			ironengineexplrange.comment = "The blast radius of the Iron Engine";
+			BuildCraftCore.ironengineexplrange = ironengineexplrange.getInt(8);
+			
+			Property stoneengineexplrange = BuildCraftCore.mainConfiguration.get(Configuration.CATEGORY_GENERAL, "engine.stoneexplrange", 4);
+			stoneengineexplrange.comment = "The blast radius of the Stirling Engine";
+			BuildCraftCore.stoneengineexplrange = stoneengineexplrange.getInt(4);
 			// MCPC+ end
 		} finally {
 			mainConfiguration.save();
