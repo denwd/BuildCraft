@@ -138,7 +138,7 @@ public class BptBlock {
 		if (!BlockUtil.trySetBlockWithNotify(context.world(), slot.x, slot.y, slot.z, slot.blockId, slot.meta)) {
 			return;
 		}
-		context.world().setBlockMetadataWithNotify(slot.x, slot.y, slot.z, slot.meta, 3);
+		context.world().setBlockMetadataWithNotify(slot.x, slot.y, slot.z, slot.meta);
 		if (Block.blocksList[slot.blockId] instanceof BlockContainer) {
 			TileEntity tile = context.world().getBlockTileEntity(slot.x, slot.y, slot.z);
 			slot.cpt.setInteger("x", slot.x);
