@@ -135,22 +135,22 @@ public class BptBlock {
 		// Meta needs to be specified twice, depending on the block behavior
 		//context.world().setBlockAndMetadataWithNotify(slot.x, slot.y, slot.z, slot.blockId, slot.meta);
 		//context.world().setBlockMetadataWithNotify(slot.x, slot.y, slot.z, slot.meta);
-		if (!BlockUtil.trySetBlockWithNotify(context.world(), slot.x, slot.y, slot.z, slot.blockId, slot.meta)) {}
-		else { context.world().setBlockMetadataWithNotify(slot.x, slot.y, slot.z, slot.meta); }
-                //MCPC+ end
+		if (!BlockUtil.trySetBlockWithNotify(context.world(), slot.x, slot.y, slot.z, slot.blockId, slot.meta)) {
+			return;
+		}
+		context.world().setBlockMetadataWithNotify(slot.x, slot.y, slot.z, slot.meta, 3);
 		if (Block.blocksList[slot.blockId] instanceof BlockContainer) {
 			TileEntity tile = context.world().getBlockTileEntity(slot.x, slot.y, slot.z);
-
 			slot.cpt.setInteger("x", slot.x);
 			slot.cpt.setInteger("y", slot.y);
 			slot.cpt.setInteger("z", slot.z);
 
-			if (tile != null) {
-				tile.readFromNBT(slot.cpt);
-			}
-		}
+			    if (tile != null) {
+				    tile.readFromNBT(slot.cpt);
+			    }
+		    }
 	}
-
+	
 	/**
 	 * Return true if the block should not be placed to the world. Requirements will not be asked on such a block, and building will not be called.
 	 */
